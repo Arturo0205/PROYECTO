@@ -164,7 +164,7 @@ function agregacom(buttons){
 
 
 function actualizarContador(comentarionum){
- //funciona
+
 	var funca = document.getElementById("muestracomentarios"+comentarionum);
 	var numm = funca.getElementsByTagName("p").length;
 	var resultado = document.getElementById("contador"+comentarionum);
