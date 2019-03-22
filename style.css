@@ -1,3 +1,12 @@
 .row1{
-width="100" height="100"/>
+	margin:0 auto;
+	max-width: 930px;
+	width: 100%;
+	background-color:#22C7F3;
+color:black;
+}
+
+.letra1{
+
+	
 }

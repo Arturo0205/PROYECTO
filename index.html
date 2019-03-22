@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta charset="utf-8">
 	<title>PROYECTO</title>
 </head>
 <body>
-		<div>
-			<span>Usuario</span>
-			<input id="textUsuario" type="text" name="">
-		</div>
-	<br>
-		<div>
-			<span>Descripción</span>
-			<input id="textDescripcion" type="text" name="">
-		</div>
-	<br>
-		<div>
-			<span>Imagen</span>
-			<input id= "image" type="text" name="">
-		</div>
-	<br>
-		<div>
-			<button type="button" name="button" onclick="save();">Guardar</button>
-		</div>
-	<hr>
-		<div>	
-			<h2 id=mostrausuario> </h2>
-			<h2 id=mostradescri></h2>	
-		</div>
+	<div class="row1">
+			<div>
+				<span>Usuario</span>
+				<input id="textUsuario" type="text" name="">
+			</div>
+		<br>
+			<div>
+				<span>Descripción</span>
+				<input id="textDescripcion" class="letra1" type="text" name="">
+			</div>
+		<br>
+			<div>
+				<span>Imagen</span>
+				<input id= "image" type="text" name="">
+			</div>
+		<br>
+			<div>
+				<button type="button" id="boton" name="button" onclick="save();">Guardar</button>
+			</div>
+		<hr>
+	</div>
+
+			<div>	
+				<h2 id=mostrausuario> </h2>
+				<h2 id=mostradescri></h2>	
+				
+			</div>
+
+		
 	
 
-
-	<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript" src="script.js"></script>
 </body>
 </html>
