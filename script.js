@@ -29,11 +29,16 @@ var creardiv2 = document.createElement("div");
 var creardiv3 = document.createElement("div");
 var creardiv4 = document.createElement("div");
 var creardiv5 = document.createElement("div");
+var divjunto = document.createElement("div");
 var crearUsuario = document.createElement("span");
 var crearDes = document.createElement("span");
 var crearImg = document.createElement("img");
 var fechaActual = document.createElement("span");
 var boton1 = document.createElement("button");
+
+	creardiv.className = "imagen"
+	creardiv5.className = "botonpestaña";
+	divjunto.className = "divjunto"
 
 	divespacios.id = "divespac"+sum;
 	divcoment.id = "divcomen" + sum;
@@ -72,11 +77,13 @@ creardiv3.appendChild(crearDes);
 fechaActual.textContent ="Fecha:  " + FH;
 creardiv4.appendChild(fechaActual);
 
+divjunto.appendChild(creardiv2);
+divjunto.appendChild(creardiv3);
+divjunto.appendChild(creardiv4);
+
 	creardiv5.appendChild(boton1);
 	divespacios.appendChild(creardiv);
-	divespacios.appendChild(creardiv2);
-	divespacios.appendChild(creardiv3);
-	divespacios.appendChild(creardiv4);
+	divespacios.appendChild(divjunto);
 	divespacios.appendChild(creardiv5);
 	divespacios.appendChild(divcoment);
 	divespacios.appendChild(linea);
@@ -95,9 +102,11 @@ var boton2 = document.createElement("button");
 var uno = document.createElement("div");
 
 uno.id = "muestracomentarios"+sum;
+uno.className = "textocomentarios"
 
 
 espaciocom.id = "icomentario"+sum;
+espaciocom.className = "inputn";
 boton2.id = "botoncomentario"+sum;
 boton2.textContent="COMENTAR";
 boton2.addEventListener("click", function(){agregacom(id)}, false); 
