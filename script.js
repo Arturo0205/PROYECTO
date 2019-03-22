@@ -1,4 +1,5 @@
 var usuario;
+var se = 0;
 var descripcion;
 var imagen;
 var fecha = new Date();
@@ -21,7 +22,8 @@ function save(){
 var id = sum;
 
 var divespacios = document.createElement("div");
-	divespacios.id = "divespac"+sum;
+var divcoment = document.createElement("div")
+var linea = document.createElement("hr");
 var creardiv = document.createElement("div");
 var creardiv2 = document.createElement("div");
 var creardiv3 = document.createElement("div");
@@ -29,12 +31,17 @@ var creardiv4 = document.createElement("div");
 var creardiv5 = document.createElement("div");
 var crearUsuario = document.createElement("span");
 var crearDes = document.createElement("span");
-var separador = document.createElement("br");
-var separador2 = document.createElement("br");
 var crearImg = document.createElement("img");
 var fechaActual = document.createElement("span");
 var boton1 = document.createElement("button");
-boton1.addEventListener("click", function(){bncomentarios(id)}, false); 
+
+	divespacios.id = "divespac"+sum;
+	divcoment.id = "divcomen" + sum;
+	divcoment.style.display = "none";
+
+	boton1.id = "contador" + sum;
+	boton1.textContent="Comentarios (" + se + ")";
+	boton1.addEventListener("click", function(){bncomentarios(id)}, false); 
 
 //console.log("Boton Save");
 //console.log(fecha.toLocaleDateString());
@@ -57,63 +64,66 @@ document.body.appendChild(creardiv);
 
 crearUsuario.textContent = "Usuario:  " + usuario;
 creardiv2.appendChild(crearUsuario);
-document.body.appendChild(creardiv2);
 
 crearDes.textContent = "Descripcion:  " + descripcion;
 creardiv3.appendChild(crearDes);
-document.body.appendChild(creardiv3);
+
 
 fechaActual.textContent ="Fecha:  " + FH;
 creardiv4.appendChild(fechaActual);
-document.body.appendChild(creardiv4);
 
-boton1.textContent="COMENTARIOS";
-creardiv5.appendChild(boton1);
-creardiv5.appendChild(separador);
-document.body.appendChild(creardiv5);
-
+	creardiv5.appendChild(boton1);
+	divespacios.appendChild(creardiv);
+	divespacios.appendChild(creardiv2);
+	divespacios.appendChild(creardiv3);
+	divespacios.appendChild(creardiv4);
+	divespacios.appendChild(creardiv5);
+	divespacios.appendChild(divcoment);
+	divespacios.appendChild(linea);
 
 	document.getElementById("textUsuario").value = ""
 	document.getElementById("textDescripcion").value = ""
 	document.getElementById("image").value = ""
 
 // COMENTARIOS 
-var linea = document.createElement("hr");
+
 var comentario = document.createElement("h3");
-var divcoment = document.createElement("div")
+var divinfo = document.createElement("div");
 var espaciocom = document.createElement("input");
 var resulcom = document.createElement("span");
 var boton2 = document.createElement("button");
-boton2.addEventListener("click", function(){agregacom(id)}, false); 
-var ndivcom = document.createElement("div");
-ndivcom.id = "muestracomentarios"+sum;
+var uno = document.createElement("div");
+
+uno.id = "muestracomentarios"+sum;
+
 
 espaciocom.id = "icomentario"+sum;
-divcoment.id = "divcomen" + sum;
-divcoment.style.display = "none";
+boton2.id = "botoncomentario"+sum;
+boton2.textContent="COMENTAR";
+boton2.addEventListener("click", function(){agregacom(id)}, false); 
 
 comentario.textContent="Comentarios"
+divinfo.appendChild(espaciocom);
+divinfo.appendChild(boton2);
+
+
 divcoment.appendChild(comentario);
-document.body.appendChild(divcoment);
+divcoment.appendChild(divinfo);
+divcoment.appendChild(uno);
 
-divcoment.appendChild(espaciocom);
-document.body.appendChild(divcoment);
-
-boton2.textContent="COMENTAR";
-divcoment.appendChild(boton2);
-divcoment.appendChild(separador);
-document.body.appendChild(divcoment);
-
-divcoment.appendChild(ndivcom);
-
-divcoment.appendChild(linea);
-
-	
-
+	console.log(divcoment)
+	document.body.appendChild(divespacios);
 sum ++;
 }
 
 function bncomentarios(enseñar){
+	//console.log("si funciono")
+	//if (document.getElementById("divcomen"+enseñar).style.display == "none"){
+
+	//}
+	//else {
+	//	document.getElementById("divcomen"+enseñar).style.display = "none";
+	//}
 if (document.getElementById("divcomen"+enseñar).style.display == "none"){
 	document.getElementById("divcomen"+enseñar).style.display = "block"; 
 }else {
@@ -122,34 +132,35 @@ if (document.getElementById("divcomen"+enseñar).style.display == "none"){
 }
 
 function agregacom(buttons){
-console.log(buttons);
+    //onsole.log(buttons);
 	//console.log("Si Funciona")
 
-	var obtenerComentario = document.getElementById("icomentario"+buttons).value;
-	console.log(obtenerComentario);
-
+	var comentariofinal = document.getElementById("icomentario"+buttons).value;
+	
 	var divcoment = document.getElementById("muestracomentarios"+buttons);
-	var spancomentario = document.createElement("span");
+	var spancomentario = document.createElement("p");
 	var fechaActual2 = document.createElement("span");
-	var separadorcoment = document.createElement("p");
-	var separadorcoment2 = document.createElement("p");
 
-
-	divcoment.appendChild(separadorcoment2);
-	spancomentario.textContent = obtenerComentario;
+	//divcoment.appendChild(espaco);
+	spancomentario.textContent = comentariofinal;
 	divcoment.appendChild(spancomentario);	
-	divcoment.appendChild(separadorcoment);
-	fechaActual2.textContent ="Fecha:  " + FH;
+	//divcoment.appendChild(espaco2);
+	fechaActual2.textContent =" - Fecha:  " + FH;
 	divcoment.appendChild(fechaActual2);
-	document.body.appendChild(divcoment);
+	
 
-	document.getElementById("icomentario"+idBoton).value = "";
-		actualizarContador(idBoton);
+	document.getElementById("icomentario"+buttons).value = "";
+		actualizarContador(buttons);
 }
 
 
-function actualizarContador(idComments){
-	var elemento = document.getElementById("colocarComments"+idComments);
+function actualizarContador(comentarionum){
+ //funciona
+	var funca = document.getElementById("muestracomentarios"+comentarionum);
+	var numm = funca.getElementsByTagName("p").length;
+	var resultado = document.getElementById("contador"+comentarionum);
 
+
+	resultado.textContent = "Comentarios (" + numm + ")";
 }
 
